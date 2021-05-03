@@ -1,0 +1,33 @@
+{
+  "configs": [
+    "implementation.xml",
+    "interface.xml",
+    "global.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "com.mycompany:american-flights-api:1.0.0-SNAPSHOT",
+  "minMuleVersion": "4.3.0",
+  "requiredProduct": "MULE_EE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "api/american-flights-api.raml",
+        "api/examples/AmericanFlightExample.raml",
+        "api/examples/AmericanFlightsExample.raml",
+        "api/examples/AmericanFlightsNoIDExample.raml",
+        "api/types/AmericanFlightDataType.raml",
+        "global.xml",
+        "implementation.xml",
+        "interface.xml",
+        "log4j2.xml"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}

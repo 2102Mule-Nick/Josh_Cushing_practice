@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+	<flow name="getFlights" doc:id="6209734d-1e4a-4321-bce1-6f38f9b8ae29" >
+		<db:select doc:name="Select" doc:id="30c93d17-acb9-47cb-a6c3-e6ba7198620b" >
+			<db:sql ><![CDATA[select * from]]></db:sql>
+		</db:select>
+		<ee:transform doc:name="Transform Message" doc:id="a96c74a6-18cc-4b0d-93e3-bddc706c8aff" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="ecbf9494-8e0d-4293-a977-731c6a5328a3" message="--&gt;getFlights"/>
+	</flow>
+	<flow name="getFlightById" doc:id="a0f8e2c9-6f6d-4c0f-97b2-12c9b576ab65" >
+		<db:query-single doc:name="Query single" doc:id="1d9eafd5-0513-4428-9318-5e8bde5b04e0" />
+		<ee:transform doc:name="Transform Message" doc:id="2235e993-3ceb-4902-8af2-41c72ef62afa">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="80f43cc4-d956-4769-a5c5-1b92adafd731" message="--&gt;getFlightById"/>
+	</flow>
+	<flow name="postFlight" doc:id="f8ad7ca7-88ee-4f50-b34e-eb6240555fd5" >
+		<db:insert doc:name="Insert" doc:id="b273167e-9c98-485d-92cd-a85c2d39f028" />
+		<ee:transform doc:name="Transform Message" doc:id="d0c71357-b3b7-42bd-afa3-9836d39e8874">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="903173d7-8140-493a-8d86-70775b12c537" message="--&gt;postFlight"/>
+	</flow>
+	<flow name="deleteFlightById" doc:id="8943df7d-7a10-493a-a1a2-dba89039eaec" >
+		<db:delete doc:name="Delete" doc:id="45febefc-a605-4b59-a176-37b6d65e6236" />
+		<ee:transform doc:name="Transform Message" doc:id="2b4a3750-93ab-464d-8ec7-2bec9cbb466f">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="65f3517d-3249-477d-8276-c90054da222a" message="--&gt;deleteFlightById"/>
+	</flow>
+	<flow name="putFlightById" doc:id="7a5ff699-6671-430d-9a50-3442eabce08e" >
+		<db:update doc:name="Update" doc:id="6c26158d-cd28-494f-91dc-fdee93b875d3" />
+		<ee:transform doc:name="Transform Message" doc:id="1366e755-6f67-465a-8f59-9e9ac78113d0">
+			<ee:message>
+				<ee:set-payload><![CDATA[%dw 2.0
+output application/java
+---
+{
+}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="eca350a8-fbc6-4165-914d-0654dd327590" message="--&gt;putFlightById"/>
+	</flow>
+</mule>
